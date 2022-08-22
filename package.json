@@ -1,0 +1,22 @@
+{
+  "name": "random_tvshow_project",
+  "version": "1.0.0",
+  "description": "Building a web application following a standard 3 tier architecture: UI – REST API Services – Database.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tddao2/Random_TVShow_Project.git"
+  },
+  "author": "Cristian Dao <tri.dao2612@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tddao2/Random_TVShow_Project/issues"
+  },
+  "homepage": "https://github.com/tddao2/Random_TVShow_Project#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
