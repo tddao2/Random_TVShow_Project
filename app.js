@@ -7,9 +7,11 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const friendRoutes = require('./routes/friends');
 const movieRoutes = require('./routes/movies');
+const ejsMate = require('ejs-mate');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(methodOverride('_method'));
