@@ -1,0 +1,36 @@
+<% layout('layouts/boilerplate')%>
+    <div class="jumbotron">
+        <%- include('../partials/flash')%>
+        <form action="/movie/<%= movieList[0] %>?_method=PUT" method="post">
+            <h1 class="text-center">Edit Movie</h1>
+            <br>
+            <h3>Modifying the movielist of <u>
+                    <%= movieList[1] %>
+                </u></h3>
+            <br>
+            <div class="form-group">
+                <input type="text" value="<%= movieList[2] %>" name="movie1" class="form-control"
+                    placeholder="Enter movie 2" required autofocus>
+                <input type="text" value="<%= movieList[3] %>" name="movie2" class="form-control"
+                    placeholder="Enter movie 3" autofocus>
+                <input type="text" value="<%= movieList[4] %>" name="movie3" class="form-control"
+                    placeholder="Enter movie 4" autofocus>
+                <input type="text" value="<%= movieList[5] %>" name="movie4" class="form-control"
+                    placeholder="Enter movie 5" autofocus>
+                <input type="text" value="<%= movieList[6] %>" name="movie5" class="form-control"
+                    placeholder="Enter movie 6" autofocus>
+                <input type="text" value="<%= movieList[7] %>" name="movie6" class="form-control"
+                    placeholder="Enter movie 7" autofocus>
+                <input type="text" value="<%= movieList[8] %>" name="movie7" class="form-control"
+                    placeholder="Enter movie 8" autofocus>
+                <input type="text" value="<%= movieList[9] %>" name="movie8" class="form-control"
+                    placeholder="Enter movie 9" autofocus>
+                <input type="text" value="<%= movieList[10] %>" name="movie9" class="form-control"
+                    placeholder="Enter movie 10" autofocus>
+                <input type="text" value="<%= movieList[11] %>" name="movie10" class="form-control"
+                    placeholder="Enter movie 1" autofocus>
+            </div>
+            <input class="btn btn-lg btn-success btn-block" value="Update" type="submit">
+        </form>
+        <a href="/movie" class="btn btn-lg btn-secondary btn-block mt-3">Back</a>
+    </div>

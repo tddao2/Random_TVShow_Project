@@ -1,0 +1,78 @@
+<% layout('layouts/boilerplate')%>
+        <!--show list of all friends and get input 10 movies-->
+        <div class="jumbotron">
+            <%- include('../partials/flash')%>
+            <h1 class="text-center"> Add Movies</h1>
+            <form action="/movie" method="post">
+                <select class="custom-select custom-select-lg mb-3" name="friendID" required>
+                    <option value="" disabled selected>Select a friend</option>
+                    <% friends.forEach(friend=> { %>
+                        <option value="<%=friend[0] %>">
+                            <%= friend[1] %>
+                                <%= friend[2] %>
+                        </option>
+                    <%}) %>
+                </select>
+                <div>
+                    <input type="text" name="movie1" class="form-control mb-2" placeholder="Enter movie 1" required
+                        autofocus>
+                    <input type="text" name="movie2" class="form-control mb-2" placeholder="Enter movie 2" autofocus>
+                    <input type="text" name="movie3" class="form-control mb-2" placeholder="Enter movie 3" autofocus>
+                    <input type="text" name="movie4" class="form-control mb-2" placeholder="Enter movie 4" autofocus>
+                    <input type="text" name="movie5" class="form-control mb-2" placeholder="Enter movie 5" autofocus>
+                    <input type="text" name="movie6" class="form-control mb-2" placeholder="Enter movie 6" autofocus>
+                    <input type="text" name="movie7" class="form-control mb-2" placeholder="Enter movie 7" autofocus>
+                    <input type="text" name="movie8" class="form-control mb-2" placeholder="Enter movie 8" autofocus>
+                    <input type="text" name="movie9" class="form-control mb-2" placeholder="Enter movie 9" autofocus>
+                    <input type="text" name="movie10" class="form-control mb-2" placeholder="Enter movie 10" autofocus>
+                </div>
+                <br>
+                <button class="btn btn-lg btn-primary btn-block">Submit</button>
+            </form>
+
+        </div>
+        <% if (movies.length> 0) {%>
+            <div class="jumbotron" disabled>
+                <div class="row justify-content-center">
+                    <% movies.forEach((movie)=> { %>
+                        <div class="col-md-auto d-flex align-items-stretch mb-4">
+                            <div class="card shadow" style="width: 18rem;">
+                                <img class="card-img-top" src="https://api.lorem.space/image/movie" alt="Card image cap">
+                                <div class="card-body ">
+                                    <h5 class="card-title text-center">
+                                        <%= movie[1] %>
+                                    </h5>
+                                    <p class="card-text"> Movie 1: <%= movie[2] %>
+                                    </p>
+                                    <p class="card-text"> Movie 2: <%= movie[3] %>
+                                    </p>
+                                    <p class="card-text"> Movie 3: <%= movie[4] %>
+                                    </p>
+                                    <p class="card-text"> Movie 4: <%= movie[5] %>
+                                    </p>
+                                    <p class="card-text"> Movie 5: <%= movie[6] %>
+                                    </p>
+                                    <p class="card-text"> Movie 6: <%= movie[7] %>
+                                    </p>
+                                    <p class="card-text"> Movie 7: <%= movie[8] %>
+                                    </p>
+                                    <p class="card-text"> Movie 8: <%= movie[9] %>
+                                    </p>
+                                    <p class="card-text"> Movie 9: <%= movie[10] %>
+                                    </p>
+                                    <p class="card-text"> Movie 10: <%= movie[11] %>
+                                    </p>
+                                </div>
+                                <a href="/movie/<%= movie[0] %>/edit"
+                                    class="btn btn-sm btn-warning mb-1 rounded">Edit</a>
+                                <form action="/movie/<%= movie[0] %>?_method=DELETE"
+                                    onclick="return confirm('Do you really want to delete?')" method="POST">
+                                    <button class="btn btn-sm btn-danger mb-1 rounded w-100">Delete</button>
+                                </form>
+
+                            </div>
+                        </div>
+                    <%}) %>
+                </div>
+            </div>
+        <%}%>

@@ -1,0 +1,50 @@
+<% layout('layouts/boilerplate')%>
+    <div class="jumbotron">
+        <%- include('../partials/flash')%>
+            <form action="/friend/newfriend" method="post">
+                <div class="form-group">
+                    <h1 class="text-center">Add new friends</h1>
+                    <input type="text" id="firstname" name="firstname" class="form-control" placeholder="First Name"
+                        required autofocus>
+                    <small id="UserHelp" class="form-text text-muted">We'll never share your information with anyone
+                        else.</small>
+                </div>
+                <div class="form-group">
+                    
+                    <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Last Name"
+                        required autofocus>
+                </div>
+                <input class="btn btn-lg btn-primary btn-block" value="Submit" type="submit">
+            </form>
+            <br>
+            <table class="table table-striped table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center"> First name </th>
+                        <th class="text-center"> Last name </th>
+                        <th class="text-center"> Action </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (friends.length> 0) {%>
+                        <% for (let friend of friends) {%>
+                            <tr>
+                                <td class="text-center">
+                                    <%= friend[1] %>
+                                </td>
+                                <td class="text-center">
+                                    <%= friend[2] %>
+                                </td>
+                                <td class="text-center">
+                                    <a href="/friend/<%= friend[0] %>/edit" class="btn btn-sm btn-warning">Edit</a>
+                                    <form class="d-inline" action="/friend/<%= friend[0] %>?_method=DELETE"
+                                        onclick="return confirm('Do you really want to delete?')" method="POST">
+                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <%}%>
+                    <% } %>
+                </tbody>
+            </table>
+    </div>

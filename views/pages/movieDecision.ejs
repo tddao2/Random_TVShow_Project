@@ -1,0 +1,19 @@
+<% layout('layouts/boilerplate')%>
+    <div class="jumbotron shadow">
+        <%- include('../partials/flash')%>
+            <form action="/movie/randomSelection" method="get">
+                <% if (movieList.length> 0) { %>
+                    <% movieList.forEach(function(movie) { %>
+                        <div class="input-group-text w-25">
+                            <div id="horizontal-item">
+                                <%=movie[12] %>. <%= movie[1] %>
+                            </div>
+                            <input type="checkbox" value="<%=movie[12] %>" name="movieID">
+                        </div>
+                    <% }); %>
+                <% } %>
+                                <br>
+                                <input type="submit" value="Randomly Select" class="btn btn-primary" />
+            </form>
+
+    </div>

@@ -1,0 +1,14 @@
+<% layout('layouts/boilerplate')%>
+    <div class="jumbotron">
+        <%- include('../partials/flash')%>
+        <h1 class="text-center">The Movie will be airing tonight is: <br>
+            <%= movieShow %>
+        </h1>
+    </div>
+
+    <script>
+        setTimeout(function () {
+            // after 2 seconds
+            window.location = "/movie/decision";
+        }, 5000)
+    </script>
