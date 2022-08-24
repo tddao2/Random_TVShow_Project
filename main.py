@@ -9,10 +9,12 @@ import random
 app = flask.Flask(__name__) 
 app.config["DEBUG"] = True
 
+# Home page
 @app.route('/', methods=['GET'])
 def home():
     return "<h1> WELCOME TO OUR MOVIE NIGHT APPLICATION! </h1>"
 
+# Get all friends
 @app.route('/friends/all', methods=['GET'])
 def api_all():
     mydb = create_connection()
@@ -24,6 +26,7 @@ def api_all():
     
     return jsonify(friends)
 
+# Create a friend
 @app.route('/friend/addfriend', methods=['POST'])
 def addfriend():
     request_data = request.get_json()
@@ -43,6 +46,7 @@ def addfriend():
         print(f"The error '{e}' occurred")
         return e
 
+# Get specific friend
 @app.route('/friends', methods=['GET'])
 def api_friends_id():
     if 'friendID' in request.args:
@@ -59,6 +63,7 @@ def api_friends_id():
     except Exception as e:
         print(f"The error '{e}' occurred")
 
+# Update a friend
 @app.route('/friends', methods=['PUT'])
 def updatefriend():
     request_data = request.get_json()
@@ -76,6 +81,7 @@ def updatefriend():
     except Exception as e:
         print(f"The error '{e}' occurred")
 
+# Delete a friend
 @app.route('/friends', methods=['DELETE'])
 def deleteFriend():
     if 'friendID' in request.args:
@@ -92,6 +98,7 @@ def deleteFriend():
     except Exception as e:
         print(f"The error '{e}' occurred")
 
+# Get all movies
 @app.route('/movies/all', methods=['GET'])
 def movie_all():
     mydb = create_connection()
@@ -106,6 +113,7 @@ def movie_all():
     
     return jsonify(movies)
 
+# Create a movie list
 @app.route('/movies', methods=['POST'])
 def addMovie():
     request_data = request.get_json()
@@ -128,7 +136,8 @@ def addMovie():
         return 'Movies have been added successfully!'
     except Exception as e:
         print(f"The error '{e}' occurred")
-    
+
+# Get specific movie list    
 @app.route('/movies', methods=['GET'])
 def api_movie_id():
     if 'movieID' in request.args: 
@@ -150,6 +159,7 @@ def api_movie_id():
     except Exception as e:
         print(f"The error '{e}' occurred")
 
+# Update a movie list
 @app.route('/movie', methods=['PUT'])
 def updateMovie():
     request_data = request.get_json()
@@ -170,6 +180,7 @@ def updateMovie():
     except Exception as e:
         print(f"The error '{e}' occurred")
 
+# Delete a movie list
 @app.route('/movie', methods=['DELETE'])
 def deleteMovie():
     if 'movieID' in request.args:
@@ -186,6 +197,7 @@ def deleteMovie():
     except Exception as e:
         print(f"The error '{e}' occurred")
 
+# Get a list of movie Id
 @app.route('/movies/random/randomMovie', methods=['POST'])
 def movie_random():
     request_data = request.get_json()
@@ -218,6 +230,7 @@ def movie_random():
     except Exception as e:
         print(f"The error '{e}' occurred")
 
+# Function call AWS connection
 def create_connection():
     connection = None
     try:
